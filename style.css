@@ -1,0 +1,7 @@
+body {
+    font-family: 'Noto Mono', 'Nimbus Mono', 'Liberation Mono', monospace;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
