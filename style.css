@@ -18,3 +18,9 @@ body {
     border: 4px inset black;
     background-color: gray;
 }
+
+button {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 5px;
+}
