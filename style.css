@@ -5,3 +5,15 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+.cal {
+    padding: 5px;
+    background-color: black;
+}
+
+.cal .screen {
+    width: 300px;
+    height: 100px;
+    border: 4px inset black;
+    background-color: gray;
+}
