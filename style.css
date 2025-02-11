@@ -10,7 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     padding: 5px;
-    background-color: black;
+    background-color: #1b1d1f;
 }
 
 .screen {
