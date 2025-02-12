@@ -70,3 +70,7 @@ button:hover {
 .numbers button {
     width: 60px;
 }
+
+.operators button {
+    width: 40px;
+}
