@@ -25,3 +25,20 @@ button {
     font-weight: bold;
     margin: 4px;
 }
+
+.buttons .math-functions,
+.buttons .functions,
+.math-functions .operators {
+    display: flex;
+}
+
+.buttons .functions {
+    justify-content: space-between;
+}
+
+.operators .left-side,
+.operators .right-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
