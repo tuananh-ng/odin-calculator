@@ -49,3 +49,16 @@ button:hover {
     flex-direction: column;
     justify-content: space-between;
 }
+
+.functions {
+    background-color: rgb(255, 255, 255);
+}
+
+.functions button {
+    color: #1b1d1f;
+}
+
+.functions button:hover {
+    background-color: #1b1d1f;
+    color: white;
+}
