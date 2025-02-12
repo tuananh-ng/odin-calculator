@@ -18,8 +18,10 @@ body {
     border: 4px inset black;
     background-color: gray;
     margin: 8px 0px 8px;
-    font-size: 85px;
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 80px;
     font-family: monospace;
 }
 
