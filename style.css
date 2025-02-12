@@ -24,6 +24,13 @@ button {
     font-size: 28px;
     font-weight: bold;
     margin: 4px;
+    background-color: transparent;
+    color: white;
+    border-style: none;
+}
+
+button:hover {
+    background-color: rgb(88, 88, 88);
 }
 
 .buttons .math-functions,
