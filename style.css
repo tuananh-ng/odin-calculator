@@ -20,6 +20,7 @@ body {
     margin: 8px 0px 8px;
     font-size: 85px;
     text-align: right;
+    font-family: monospace;
 }
 
 button {
