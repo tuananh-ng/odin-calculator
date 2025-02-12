@@ -1,6 +1,5 @@
 body {
     font-family: 'Noto Mono', 'Nimbus Mono', 'Liberation Mono', monospace;
-    font-size: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,7 +34,8 @@ button {
 }
 
 button:hover {
-    background-color: rgb(88, 88, 88);
+    background-color: white;
+    color: #1b1d1f;
 }
 
 .buttons .math-functions,
