@@ -62,3 +62,11 @@ button:hover {
     background-color: #1b1d1f;
     color: white;
 }
+
+.numbers {
+    background-color: rgb(31, 31, 31);
+}
+
+.numbers button {
+    width: 60px;
+}
