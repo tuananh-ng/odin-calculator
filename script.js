@@ -1,10 +1,24 @@
 const operators = {
-    add: add,
-    sub: sub,
-    div: div,
-    mul: mul,
-    perc: perc,
-    eq: eq,
+    add: {
+        numArgs: 2,
+        func: add,
+    },
+    sub: {
+        numArgs: 2,
+        func: sub,
+    },
+    div: {
+        numArgs: 2,
+        func: div,
+    },
+    mul: {
+        numArgs: 2,
+        func: mul,
+    },
+    perc: {
+        numArgs: 1,
+        func: perc,
+    },
 }
 
 updateScreenWhenClickingNumbers();
