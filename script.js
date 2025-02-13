@@ -59,12 +59,14 @@ function div(x, y) {
 
 function perc(x) {
     return x / 100;
-}
+} // end math functions
 
 /* Mathematically, '=' is a comparison operator
 but in a simple calculator, it will perform the given calculation
 and give out the result */
-function eq(x, y, operator) {
-    let result = operator(x, y);
-    return result;
-} // end math functions
+function eq(operator, ...args) {
+    let numArgs = operators[operator].numArgs;
+    if (numArgs === 1) return operators[operator].func(args[0]);
+
+    return operators[operator].func(args[0], args[1]);
+}
