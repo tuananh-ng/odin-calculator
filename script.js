@@ -31,6 +31,6 @@ function div(x, y) {
     return x / y;
 }
 
-fucntion perc(x) {
+function perc(x) {
     return x / 100;
 }
