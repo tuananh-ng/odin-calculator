@@ -30,3 +30,7 @@ function mul(x, y) {
 function div(x, y) {
     return x / y;
 }
+
+fucntion perc(x) {
+    return x / 100;
+}
