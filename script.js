@@ -15,6 +15,8 @@ function updateScreenWhenClickNumbers() {
     });
 }
 
+
+// Math functions
 function add(x, y) {
     return x + y;
 }
@@ -42,4 +44,4 @@ and give out the result */
 function eq(x, y, operator) {
     let result = operator(x, y);
     return result;
-}
+} // end math functions
