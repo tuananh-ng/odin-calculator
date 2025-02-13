@@ -1,3 +1,12 @@
+const operators = {
+    add: add,
+    sub: sub,
+    div: div,
+    mul: mul,
+    perc: perc,
+    eq: eq,
+}
+
 updateScreenWhenClickNumbers();
 
 function printToScreen(string) {
