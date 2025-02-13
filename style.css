@@ -38,9 +38,9 @@ button:hover {
     color: #1b1d1f;
 }
 
-.buttons .math-functions,
+.buttons .math,
 .buttons .functions,
-.math-functions .operators {
+.math .operators {
     display: flex;
 }
 
