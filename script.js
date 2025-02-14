@@ -36,6 +36,7 @@ function operate() {
 
     function classifyInputs(input) {
         let inputID = input.getAttribute('id');
+        if (inputID.includes('num')) inputID = 'num';
         let inputContent = input.textContent;
     
         inputQueue.push({
