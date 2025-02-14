@@ -21,8 +21,29 @@ const operators = {
         func: perc,
     },
 }
+const inputQueue = [];
 
 updateScreenWhenClickingNumbers();
+operate();
+
+function operate() {
+    const inputs = document.querySelectorAll('.math button');
+    inputs.forEach((input) => {
+        input.addEventListener('click', () => {
+            classifyInputs(input);
+        });
+    });
+
+    function classifyInputs(input) {
+        let inputID = input.getAttribute('id');
+        let inputContent = input.textContent;
+    
+        inputQueue.push({
+            class: inputID,
+            content: inputContent,
+        });
+    }
+}
 
 function printToScreen(string) {
     const screen = document.querySelector('.screen');
@@ -38,7 +59,6 @@ function updateScreenWhenClickingNumbers() {
         });
     });
 }
-
 
 // Math functions
 function add(x, y) {
