@@ -23,45 +23,41 @@ const operators = {
 }
 const inputStorage = [];
 const operatorQueue = [];
-
 updateScreenWhenClickingNumbers();
-operate();
 
-function operate() {
-    const inputs = document.querySelectorAll('.math button');
-    inputs.forEach((input) => {
-        input.addEventListener('click', () => {
-            labelInputs(input);
-        });
+const inputs = document.querySelectorAll('.math button');
+inputs.forEach((input) => {
+    input.addEventListener('click', () => {
+        labelInputs(input);
     });
-    
-    const mathOperators = document.querySelectorAll('.math .operators button');
-    mathOperators.forEach((mathOperator) => {
-        mathOperator.addEventListener('click', () => {
-            classifyOperators(mathOperator);
-        });
+});
+
+const mathOperators = document.querySelectorAll('.math .operators button');
+mathOperators.forEach((mathOperator) => {
+    mathOperator.addEventListener('click', () => {
+        classifyOperators(mathOperator);
     });
+});
 
-    function labelInputs(input) {
-        let inputID = input.getAttribute('id');
-        if (inputID.includes('num')) inputID = 'num';
-        let inputContent = input.textContent;
-    
-        inputStorage.push({
-            class: inputID,
-            content: inputContent,
-        });
-    }
+function labelInputs(input) {
+    let inputID = input.getAttribute('id');
+    if (inputID.includes('num')) inputID = 'num';
+    let inputContent = input.textContent;
 
-    function classifyOperators(operator) {
-        let operatorName = operator.getAttribute('id');
-        let operatorIndex = inputStorage.findIndex((input) => input.class === operatorName);
+    inputStorage.push({
+        class: inputID,
+        content: inputContent,
+    });
+}
 
-        operatorQueue.push({
-            name: operatorName,
-            index: operatorIndex,
-        });
-    }
+function classifyOperators(operator) {
+    let operatorName = operator.getAttribute('id');
+    let operatorIndex = inputStorage.findIndex((input) => input.class === operatorName);
+
+    operatorQueue.push({
+        name: operatorName,
+        index: operatorIndex,
+    });
 }
 
 function printToScreen(string) {
@@ -77,6 +73,10 @@ function updateScreenWhenClickingNumbers() {
             printToScreen(num.textContent);
         });
     });
+}
+
+function operate(operator, args) {
+    operator(args);
 }
 
 // Math functions
