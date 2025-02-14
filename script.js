@@ -22,6 +22,7 @@ const operators = {
     },
 }
 const inputQueue = [];
+const operatorQueue = [];
 
 updateScreenWhenClickingNumbers();
 operate();
@@ -33,6 +34,13 @@ function operate() {
             classifyInputs(input);
         });
     });
+    
+    const mathOperators = document.querySelectorAll('.math .operators button');
+    mathOperators.forEach((mathOperator) => {
+        mathOperator.addEventListener('click', () => {
+            classifyOperators(mathOperator);
+        });
+    });
 
     function classifyInputs(input) {
         let inputID = input.getAttribute('id');
@@ -42,6 +50,16 @@ function operate() {
         inputQueue.push({
             class: inputID,
             content: inputContent,
+        });
+    }
+
+    function classifyOperators(operator) {
+        let operatorName = operator.getAttribute('id');
+        let operatorIndex = inputQueue.findIndex((input) => input.class === operatorName);
+
+        operatorQueue.push({
+            name: operatorName,
+            index: operatorIndex,
         });
     }
 }
