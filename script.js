@@ -21,7 +21,7 @@ const operators = {
         func: perc,
     },
 }
-const inputQueue = [];
+const inputStorage = [];
 const operatorQueue = [];
 
 updateScreenWhenClickingNumbers();
@@ -31,7 +31,7 @@ function operate() {
     const inputs = document.querySelectorAll('.math button');
     inputs.forEach((input) => {
         input.addEventListener('click', () => {
-            classifyInputs(input);
+            labelInputs(input);
         });
     });
     
@@ -42,12 +42,12 @@ function operate() {
         });
     });
 
-    function classifyInputs(input) {
+    function labelInputs(input) {
         let inputID = input.getAttribute('id');
         if (inputID.includes('num')) inputID = 'num';
         let inputContent = input.textContent;
     
-        inputQueue.push({
+        inputStorage.push({
             class: inputID,
             content: inputContent,
         });
@@ -55,7 +55,7 @@ function operate() {
 
     function classifyOperators(operator) {
         let operatorName = operator.getAttribute('id');
-        let operatorIndex = inputQueue.findIndex((input) => input.class === operatorName);
+        let operatorIndex = inputStorage.findIndex((input) => input.class === operatorName);
 
         operatorQueue.push({
             name: operatorName,
