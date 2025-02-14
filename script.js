@@ -29,13 +29,7 @@ const inputs = document.querySelectorAll('.math button');
 inputs.forEach((input) => {
     input.addEventListener('click', () => {
         labelInputs(input);
-    });
-});
-
-const mathOperators = document.querySelectorAll('.math .operators button');
-mathOperators.forEach((mathOperator) => {
-    mathOperator.addEventListener('click', () => {
-        classifyOperators(mathOperator);
+        classifyOperators(input);
     });
 });
 
@@ -52,6 +46,7 @@ function labelInputs(input) {
 
 function classifyOperators(operator) {
     let operatorName = operator.getAttribute('id');
+    if (operatorName.includes('num')) return;
     let operatorIndex = inputStorage.findIndex((input) => input.class === operatorName);
 
     operatorQueue.push({
@@ -76,7 +71,8 @@ function updateScreenWhenClickingNumbers() {
 }
 
 function operate(operator, args) {
-    operator(args);
+    let ans = operator(args);
+    return ans;
 }
 
 // Math functions
