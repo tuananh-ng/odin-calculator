@@ -80,25 +80,25 @@ function updateScreenWhenClickingNumbers() {
 }
 
 // Math functions
-function add(x, y) {
-    return x + y;
+function add(args) {
+    return args[0] + args[1];
 }
 
-function sub(x, y) {
-    return x - y;
+function sub(args) {
+    return args[0] - args[1];
 }
 
-function mul(x, y) {
-    return x * y;
+function mul(args) {
+    return args[0] * args[1];
 }
 
-function div(x, y) {
-    if (y == 0) return;
-    return x / y;
+function div(args) {
+    if (args[1] == 0) return;
+    return args[0] / args[1];
 }
 
-function perc(x) {
-    return x / 100;
+function perc(args) {
+    return args[0] / 100;
 } // end math functions
 
 /* Mathematically, '=' is a comparison operator
