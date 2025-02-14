@@ -1,3 +1,4 @@
+let result = 0;
 const operators = {
     add: {
         numArgs: 2,
@@ -63,10 +64,8 @@ function perc(x) {
 
 /* Mathematically, '=' is a comparison operator
 but in a simple calculator, it will perform the given calculation
-and give out the result */
-function eq(operator, ...args) {
-    let numArgs = operators[operator].numArgs;
-    if (numArgs === 1) return operators[operator].func(args[0]);
-
-    return operators[operator].func(args[0], args[1]);
+and give out the result.
+for now, let keep it simple by printing out the result */
+function eq() {
+    printToScreen(result);
 }
