@@ -23,6 +23,7 @@ const operators = {
 }
 const inputStorage = [];
 const operatorQueue = [];
+const args = [];
 updateScreenWhenClickingNumbers();
 
 const inputs = document.querySelectorAll('.math button');
@@ -30,6 +31,7 @@ inputs.forEach((input) => {
     input.addEventListener('click', () => {
         labelInputs(input);
         classifyOperators(input);
+        collectArgs(input);
     });
 });
 
@@ -53,6 +55,22 @@ function classifyOperators(operator) {
         name: operatorName,
         index: operatorIndex,
     });
+}
+
+function collectArgs(arg) {
+    let argID = arg.getAttribute('id');
+    if (!(argID.includes('num'))) {
+        (args.at(-1)) ? args[args.length - 1] = +args.at(-1) : args.push(0);
+        args.push('');
+        return;
+    }
+
+    if (args.length === 0) {
+        args.push('' + arg.textContent);
+        return;
+    }
+
+    args[args.length - 1] += arg.textContent;
 }
 
 function printToScreen(string) {
@@ -102,5 +120,5 @@ but in a simple calculator, it will perform the given calculation
 and give out the result.
 for now, let keep it simple by printing out the result */
 function eq() {
-    printToScreen(result);
+    return result;
 }
