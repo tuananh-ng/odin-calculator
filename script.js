@@ -37,12 +37,18 @@ inputs.forEach((input) => {
         classifyOperators(input);
         collectArgs(input);
 
+        if (operatorQueue.length === 1 && operatorQueue.at(0).name === 'eq') {
+            operatorQueue.shift();
+            args.splice(1, args.length - 1);
+        }
+
         if (operatorQueue.length === 2) {
             let operator = operatorQueue.shift();
             let numActiveArgs = operators[operator.name].numArgs;
             let activeArgs = args.splice(0, numActiveArgs);
 
             result = operate(operators[operator.name].func, activeArgs);
+            args.unshift(result);
             printToScreen(result);
         }
     });
@@ -72,18 +78,27 @@ function classifyOperators(operator) {
 
 function collectArgs(arg) {
     let argID = arg.getAttribute('id');
-    if (!(argID.includes('num'))) {
-        (args.at(-1)) ? args[args.length - 1] = +args.at(-1) : args.push(0);
-        args.push('');
+
+    if ((argID.includes('num'))) {
+        if (args.length === 0) {
+            args.push(arg.textContent);
+            return
+        }
+
+        if (Number.isInteger(args.at(-1))) {
+            args.push(arg.textContent);
+        } else {
+            args[args.length - 1] += arg.textContent;
+        }
+        
         return;
     }
 
-    if (args.length === 0) {
-        args.push('' + arg.textContent);
+    if (args.at(-1) === '') {
         return;
     }
-
-    args[args.length - 1] += arg.textContent;
+    (args.at(-1) !== undefined) ? args[args.length - 1] = +args.at(-1) : args.push(0);
+    args.push('');
 }
 
 function printToScreen(string) {
