@@ -30,6 +30,9 @@ const operatorQueue = [];
 const args = [];
 updateScreenWhenClickingNumbers();
 
+const allClear = document.querySelector('.functions button#ac');
+allClear.addEventListener('click', ac);
+
 const inputs = document.querySelectorAll('.math button');
 inputs.forEach((input) => {
     input.addEventListener('click', () => {
@@ -148,4 +151,12 @@ and give out the result.
 for now, let keep it simple by printing out the result */
 function eq() {
     return result;
+}
+
+function ac() {
+    result = 0;
+    inputStorage.splice(0, inputStorage.length);
+    operatorQueue.splice(0, operatorQueue.length);
+    args.splice(0, args.length);
+    printToScreen(result);
 }
