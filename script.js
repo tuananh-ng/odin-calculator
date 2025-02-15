@@ -36,6 +36,15 @@ inputs.forEach((input) => {
         labelInputs(input);
         classifyOperators(input);
         collectArgs(input);
+
+        if (operatorQueue.length === 2) {
+            let operator = operatorQueue.shift();
+            let numActiveArgs = operators[operator.name].numArgs;
+            let activeArgs = args.splice(0, numActiveArgs);
+
+            result = operate(operators[operator.name].func, activeArgs);
+            printToScreen(result);
+        }
     });
 });
 
@@ -85,7 +94,6 @@ function printToScreen(string) {
 function updateScreenWhenClickingNumbers() {
     const nums = document.querySelectorAll('.numbers button');
     nums.forEach((num) => {
-        if (num.textContent === '.') return;
         num.addEventListener('click', () => {
             printToScreen(num.textContent);
         });
