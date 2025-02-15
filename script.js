@@ -32,6 +32,8 @@ updateScreenWhenClickingNumbers();
 
 const allClear = document.querySelector('.functions button#ac');
 allClear.addEventListener('click', ac);
+const delBtn = document.querySelector('.functions button#del');
+delBtn.addEventListener('click', del);
 
 const inputs = document.querySelectorAll('.math button');
 inputs.forEach((input) => {
@@ -159,4 +161,29 @@ function ac() {
     operatorQueue.splice(0, operatorQueue.length);
     args.splice(0, args.length);
     printToScreen(result);
+}
+
+function del() {
+    let lastInput = inputStorage.pop();
+    let kind = lastInput.class;
+    console.log(lastInput);
+    if (operatorQueue.at(-1) && kind !== 'num') {
+        if (lastInput.class === operatorQueue.at(-1).name) {
+            operatorQueue.pop();
+        }
+    }
+
+    if (args.at(-1) && kind === 'num') {
+        let inputString = args.at(-1);
+        let lastChar = inputString.at(-1);
+        if (lastInput.content === lastChar) {
+            if (inputString.length === 1) {
+                args[args.length - 1] = '';
+            } else {
+                args[args.length - 1] = inputString.substring(0, inputString.length - 1);
+            }
+        }
+    }
+
+    printToScreen(inputStorage.at(-1).content);
 }
