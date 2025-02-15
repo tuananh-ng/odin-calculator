@@ -20,6 +20,10 @@ const operators = {
         numArgs: 1,
         func: perc,
     },
+    eq: {
+        numArgs: 2,
+        func: eq,
+    },
 }
 const inputStorage = [];
 const operatorQueue = [];
