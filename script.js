@@ -163,6 +163,7 @@ function ac() {
     inputStorage.splice(0, inputStorage.length);
     operatorQueue.splice(0, operatorQueue.length);
     args.splice(0, args.length);
+    console.log(`all clear`);
     printToScreen(result);
 }
 
