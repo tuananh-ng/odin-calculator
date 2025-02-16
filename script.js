@@ -39,19 +39,19 @@ const inputs = document.querySelectorAll('.math button');
 inputs.forEach((input) => {
     input.addEventListener('click', () => {
         labelInputs(input);
-        classifyOperators(input);
+        collectOperators(input);
         collectArgs(input);
 
-        if (operatorQueue.length >= 1 && operatorQueue.at(0).name === 'eq') {
+        if (operatorQueue.length >= 1 && operatorQueue.at(0) === 'eq') {
             operatorQueue.shift();
         }
 
         if (operatorQueue.length === 2) {
             let operator = operatorQueue.shift();
-            let numActiveArgs = operators[operator.name].numArgs;
+            let numActiveArgs = operators[operator].numArgs;
             let activeArgs = args.splice(0, numActiveArgs);
 
-            result = operate(operators[operator.name].func, activeArgs);
+            result = operate(operators[operator].func, activeArgs);
             result = roundTo2DecimalPlaces(result);
             inputStorage.splice(0, numActiveArgs + 1);
             args.unshift(result);
@@ -71,15 +71,11 @@ function labelInputs(input) {
     });
 }
 
-function classifyOperators(operator) {
+function collectOperators(operator) {
     let operatorName = operator.getAttribute('id');
     if (operatorName.includes('num')) return;
-    let operatorIndex = inputStorage.findIndex((input) => input.class === operatorName);
 
-    operatorQueue.push({
-        name: operatorName,
-        index: operatorIndex,
-    });
+    operatorQueue.push(operatorName);
 }
 
 function collectArgs(arg) {
@@ -168,7 +164,7 @@ function del() {
     let lastInput = inputStorage.pop();
     let kind = lastInput.class;
     if (operatorQueue.at(-1) && kind !== 'num') {
-        if (lastInput.class === operatorQueue.at(-1).name) {
+        if (lastInput.class === operatorQueue.at(-1)) {
             operatorQueue.pop();
         }
     }
