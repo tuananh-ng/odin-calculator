@@ -177,6 +177,11 @@ function ac() {
 // remove the last input and print the input before
 function del() {
     let lastInput = inputStorage.pop();
+    if (!lastInput) {
+        console.log('No input found');
+        return;
+    }
+    
     let kind = lastInput.class;
     let removed;
     if (operatorQueue.at(-1) && kind !== 'num') {
