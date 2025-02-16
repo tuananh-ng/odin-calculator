@@ -44,6 +44,7 @@ inputs.forEach((input) => {
 
         if (operatorQueue.length >= 1 && operatorQueue.at(0) === 'eq') {
             operatorQueue.shift();
+            console.log(operatorQueue.length);
         }
 
         if (operatorQueue.length === 2) {
@@ -56,11 +57,8 @@ inputs.forEach((input) => {
 
             inputStorage.splice(0, numActiveArgs + 1);
             if (result === undefined) {
-                alert('Did you just divide by 0?');
-                printToScreen('error');
+                alert('Did you just divide by 0? The result is undefined but got put back to 0 for the next calculation.');
                 result = 0;
-                args.unshift(result);
-                return;
             }
             args.unshift(result); // feed the current result to the next calculation
             printToScreen(result);
