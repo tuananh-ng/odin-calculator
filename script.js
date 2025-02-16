@@ -96,11 +96,16 @@ function collectArgs(arg) {
         return;
     }
 
+    /* Whenever an operator is pressed, it is supposed to make a new slot
+    for a new argument. This prevents the function from adding a new slot
+    and converting the previous slot into 0 when two continuous operators
+    are pressed */
     if (args.at(-1) === '') {
         return;
     }
+
     (args.at(-1) !== undefined) ? args[args.length - 1] = +args.at(-1) : args.push(0);
-    args.push('');
+    args.push(''); // make a new slot for the next argument
 }
 
 function printToScreen(string) {
