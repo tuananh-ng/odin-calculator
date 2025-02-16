@@ -76,6 +76,7 @@ function collectOperators(operator) {
     let operatorName = operator.getAttribute('id');
     if (operatorName.includes('num')) return;
 
+    if (operatorName === operatorQueue.at(-1)) return;
     operatorQueue.push(operatorName);
 }
 
