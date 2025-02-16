@@ -42,9 +42,8 @@ inputs.forEach((input) => {
         classifyOperators(input);
         collectArgs(input);
 
-        if (operatorQueue.length === 1 && operatorQueue.at(0).name === 'eq') {
+        if (operatorQueue.length >= 1 && operatorQueue.at(0).name === 'eq') {
             operatorQueue.shift();
-            args.splice(1, args.length - 1);
         }
 
         if (operatorQueue.length === 2) {
@@ -53,6 +52,7 @@ inputs.forEach((input) => {
             let activeArgs = args.splice(0, numActiveArgs);
 
             result = operate(operators[operator.name].func, activeArgs);
+            inputStorage.splice(0, numActiveArgs + 1);
             args.unshift(result);
             printToScreen(result);
         }
