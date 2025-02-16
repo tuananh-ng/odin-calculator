@@ -53,8 +53,9 @@ inputs.forEach((input) => {
 
             result = operate(operators[operator].func, activeArgs);
             result = roundTo2DecimalPlaces(result);
+
             inputStorage.splice(0, numActiveArgs + 1);
-            args.unshift(result);
+            args.unshift(result); // feed the current result to the next calculation
             printToScreen(result);
         }
     });
