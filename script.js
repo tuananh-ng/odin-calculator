@@ -166,7 +166,6 @@ function ac() {
 function del() {
     let lastInput = inputStorage.pop();
     let kind = lastInput.class;
-    console.log(lastInput);
     if (operatorQueue.at(-1) && kind !== 'num') {
         if (lastInput.class === operatorQueue.at(-1).name) {
             operatorQueue.pop();
