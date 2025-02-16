@@ -157,6 +157,7 @@ function eq() {
     return result;
 }
 
+// back to the starting line
 function ac() {
     result = 0;
     inputStorage.splice(0, inputStorage.length);
@@ -165,18 +166,23 @@ function ac() {
     printToScreen(result);
 }
 
+// remove the last input and print the input before
 function del() {
     let lastInput = inputStorage.pop();
     let kind = lastInput.class;
+    let removed;
     if (operatorQueue.at(-1) && kind !== 'num') {
         if (lastInput.class === operatorQueue.at(-1)) {
-            operatorQueue.pop();
+            removed = operatorQueue.pop();
+            console.log(`deleted input named ${removed}`);
         }
     }
 
     if (args.at(-1) && kind === 'num') {
         let inputString = args.at(-1);
         let lastChar = inputString.at(-1);
+        removed = lastChar;
+        console.log(`deleted input named ${removed}`);
         if (lastInput.content === lastChar) {
             if (inputString.length === 1) {
                 args[args.length - 1] = '';
@@ -186,7 +192,7 @@ function del() {
         }
     }
 
-    printToScreen(inputStorage.at(-1).content);
+    if (inputStorage.at(-1)) printToScreen(inputStorage.at(-1).content);
 }
 
 function roundTo2DecimalPlaces(num) {
