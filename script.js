@@ -30,8 +30,8 @@ const operatorQueue = [];
 const args = [];
 updateScreenWhenClickingNumbers();
 
-const allClear = document.querySelector('.functions button#ac');
-allClear.addEventListener('click', ac);
+const allClearBtn = document.querySelector('.functions button#ac');
+allClearBtn.addEventListener('click', ac);
 const delBtn = document.querySelector('.functions button#del');
 delBtn.addEventListener('click', del);
 
