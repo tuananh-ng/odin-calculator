@@ -52,6 +52,7 @@ inputs.forEach((input) => {
             let activeArgs = args.splice(0, numActiveArgs);
 
             result = operate(operators[operator.name].func, activeArgs);
+            result = roundTo2DecimalPlaces(result);
             inputStorage.splice(0, numActiveArgs + 1);
             args.unshift(result);
             printToScreen(result);
@@ -185,4 +186,20 @@ function del() {
     }
 
     printToScreen(inputStorage.at(-1).content);
+}
+
+function roundTo2DecimalPlaces(num) {
+    if (typeof(num) !== 'number') return;
+    
+    let stringOfNum = `${num}`;
+    if (!stringOfNum.includes('.')) return num;
+
+    let indexOfDot = stringOfNum.indexOf('.');
+    let digitsAfterDot = stringOfNum.substring(indexOfDot + 1, stringOfNum.length);
+    if (digitsAfterDot <= 2) return num;
+
+    let roundedPart = digitsAfterDot.substring(0, 2) + '.' + digitsAfterDot.substring(2, digitsAfterDot.length);
+    roundedPart = `${Math.round(+roundedPart)}`;
+    stringOfNum = stringOfNum.substring(0, indexOfDot + 1) + roundedPart;
+    return +stringOfNum;
 }
