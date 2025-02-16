@@ -51,9 +51,11 @@ inputs.forEach((input) => {
             let operator = operatorQueue.shift();
             let numActiveArgs = operators[operator].numArgs;
             let activeArgs = args.splice(0, numActiveArgs);
+            console.log(`${operator} with ${activeArgs}`);
 
             result = operate(operators[operator].func, activeArgs);
             result = roundTo2DecimalPlaces(result);
+            console.log(`result: ${result}`);
 
             inputStorage.splice(0, numActiveArgs + 1);
             if (result === undefined) {
@@ -181,7 +183,7 @@ function del() {
         console.log('No input found');
         return;
     }
-    
+
     let kind = lastInput.class;
     let removed;
     if (operatorQueue.at(-1) && kind !== 'num') {
