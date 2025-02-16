@@ -55,6 +55,13 @@ inputs.forEach((input) => {
             result = roundTo2DecimalPlaces(result);
 
             inputStorage.splice(0, numActiveArgs + 1);
+            if (result === undefined) {
+                alert('Did you just divide by 0?');
+                printToScreen('error');
+                result = 0;
+                args.unshift(result);
+                return;
+            }
             args.unshift(result); // feed the current result to the next calculation
             printToScreen(result);
         }
