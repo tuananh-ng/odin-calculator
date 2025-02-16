@@ -44,7 +44,7 @@ inputs.forEach((input) => {
 
         if (operatorQueue.length >= 1 && operatorQueue.at(0) === 'eq') {
             operatorQueue.shift();
-            console.log(operatorQueue.length);
+            if (args.at(0) === 0) args.shift();
         }
 
         if (operatorQueue.length === 2) {
